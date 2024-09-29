@@ -2,4 +2,4 @@
 
 ## Summary
 
-Doing some exercises on in C from lowlevel.academy
+Doing some exercises in C from lowlevel.academy
