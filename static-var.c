@@ -8,12 +8,19 @@ struct employee_t {
    bool staff;
 };
 
-void initialize_employee(struct employee_t *e) {
-   e->id = 0;
+int initialize_employee(struct employee_t *e) {
+
+   // initialize static var
+   static int numEmployees = 0;
+
+   // incriment static var
+   numEmployees++;
+
+   e->id = numEmployees;
    e->income = 0;
    e->staff = false;
 
-   return;
+   return numEmployees;
 }
 
 int main() {
@@ -30,9 +37,10 @@ int main() {
       return -1;
    }
 
-   initialize_employee(&employees[0]);
-   
-   printf("%d\n", employees[0].income);
+   for (int i = 0; i < n; i++) {
+      int id = initialize_employee(&employees[i]);
+      printf("new employee, ID is %d\n", id);
+   }
 
    free(employees);
    employees = NULL;
